@@ -5,47 +5,47 @@ Projeto aplicado
 
 ## DADOS COLETADOS
 
-### Nome do campo				### Tipo ### Modo
-*clientId									  STRING	NULLABLE
-*type										    STRING	NULLABLE
-*version									  STRING	NULLABLE
-*tid										  	STRING	NULLABLE
-*userId								  	  STRING	NULLABLE
-*referer									  STRING	NULLABLE
-*ip											    STRING	NULLABLE
-*timestamp								  INTEGER	NULLABLE
-*device									    RECORD	NULLABLE
-*device. screenResolution	  STRING	NULLABLE
-*device. viewPort					  STRING	NULLABLE
-*device. encoding					  STRING	NULLABLE
-*device. screenColors			  STRING	NULLABLE
-*device. language					  STRING	NULLABLE
-*device. javaEnabled			  BOOLEAN	NULLABLE
-*device. flashVersion		  	STRING	NULLABLE
-*device. userAgent					STRING	NULLABLE
-*page										    RECORD	NULLABLE
-*page.location							STRING	NULLABLE
-*page.title								  STRING	NULLABLE
-*page.pagePath						  STRING	NULLABLE
-*page.hostname						  STRING	NULLABLE
-*trafficSource							RECORD	NULLABLE
-*trafficSource.referralPath STRING	NULLABLE
-*trafficSource.campaign			STRING	NULLABLE
-*trafficSource.source				STRING	NULLABLE
-*trafficSource.medium				STRING	NULLABLE
-*trafficSource.term					STRING	NULLABLE
-*trafficSource.content			STRING	NULLABLE
-*eventInfo								  RECORD	NULLABLE
-*eventInfo.eventCategory		STRING	NULLABLE
-*eventInfo.eventAction			STRING	NULLABLE
-*eventInfo.eventLabel				STRING	NULLABLE
-*eventInfo.eventValue				INTEGER	NULLABLE
-*customDimensions					  RECORD	REPEATED
-*customDimensions.index		  INTEGER	NULLABLE
-*customDimensions.value	  	STRING	NULLABLE
-*customMetrics						  RECORD	REPEATED
-*customMetrics.index				INTEGER	NULLABLE
-*customMetrics.value				STRING	NULLABLE
+### Nome do campo				  ### Tipo ### Modo
+* clientId									  STRING	NULLABLE
+* type										    STRING	NULLABLE
+* version									    STRING	NULLABLE
+* tid										  	  STRING	NULLABLE
+* userId								  	  STRING	NULLABLE
+* referer									    STRING	NULLABLE
+* ip											    STRING	NULLABLE
+* timestamp								    INTEGER	NULLABLE
+* device									    RECORD	NULLABLE
+* device. screenResolution	  STRING	NULLABLE
+* device. viewPort					  STRING	NULLABLE
+* device. encoding					  STRING	NULLABLE
+* device. screenColors			  STRING	NULLABLE
+* device. language					  STRING	NULLABLE
+* device. javaEnabled			    BOOLEAN	NULLABLE
+* device. flashVersion		  	STRING	NULLABLE
+* device. userAgent					  STRING	NULLABLE
+* page										    RECORD	NULLABLE
+* page.location							  STRING	NULLABLE
+* page.title								  STRING	NULLABLE
+* page.pagePath						    STRING	NULLABLE
+* page.hostname						    STRING	NULLABLE
+* trafficSource							  RECORD	NULLABLE
+* trafficSource.referralPath  STRING	NULLABLE
+* trafficSource.campaign			STRING	NULLABLE
+* trafficSource.source				STRING	NULLABLE
+* trafficSource.medium				STRING	NULLABLE
+* trafficSource.term					STRING	NULLABLE
+* trafficSource.content			  STRING	NULLABLE
+* eventInfo								    RECORD	NULLABLE
+* eventInfo.eventCategory		  STRING	NULLABLE
+* eventInfo.eventAction			  STRING	NULLABLE
+* eventInfo.eventLabel				STRING	NULLABLE
+* eventInfo.eventValue				INTEGER	NULLABLE
+* customDimensions					  RECORD	REPEATED
+* customDimensions.index		  INTEGER	NULLABLE
+* customDimensions.value	  	STRING	NULLABLE
+* customMetrics						    RECORD	REPEATED
+* customMetrics.index				  INTEGER	NULLABLE
+* customMetrics.value				  STRING	NULLABLE
 
 
 
