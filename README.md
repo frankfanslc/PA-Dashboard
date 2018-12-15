@@ -44,7 +44,9 @@ customDimensions					  RECORD	REPEATED
 customDimensions.index		  INTEGER	NULLABLE
 customDimensions.value	  	STRING	NULLABLE
 customMetrics						    RECORD	REPEATED
+
 customMetrics.index				  INTEGER	NULLABLE
+
 customMetrics.value				  STRING	NULLABLE
 
 
