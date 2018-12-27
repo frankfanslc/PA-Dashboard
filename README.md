@@ -50,19 +50,24 @@ Projeto aplicado
 
 
 
-## CALCULAR
+## CALCULAR DIARIAMENTE
 
-* Lista de sessões: agrupar linhas por clienteID e fazer o cálculo se é a mesma sessão ou uma nova e contar as sessões, listando apenas uma por cliente
-* Tipo de usuário (novos ou recorrentes): como consultar isso no Hadoop e apenas entre os dados de um determinado site?
-* Year, day, year, month, week: extrair esses dados do atributo Timestamp
-* Listar o número de cada tipo de usuário para cada dia
-* Calcular a duração da sessão por usuário
-* Calcular a duração média da Sessão
-* Calcular o número de pageviews por dia
-* Calcular o número de pageviews por usuário
-* Calcular o número médio de pageviews por usuário
-* Calcular as metas (tempo de sessão e páginas visitadas) por usuário e uma taxa geral
-* Calcular taxa de conversoes
+* Extrair Year, day, year, month, week do atributo Timestamp
+* Calcular a duração da sessão por usuário (max - min) baseado em timestamp
+* Calcular a duração média da Sessão (valor único)
+* Calcular o número de pageviews por usuário 
+* Calcular o número de pageviews por dia (valor único)
+* Calcular o número médio de pageviews (valor único)
+* Calcular as metas (tempo de sessão e páginas visitadas) por usuário
+* Calcular as metas (tempo de sessão e páginas visitadas) completadas (somatório)
+* Calcular taxa de conversões de metas (valor único)
 * Calcular número de usuários por fonte de origem (social, organico, adWords)
-* Calcular o número de entradas e saídas por página
+
+
+## EXTRAS
+
+* Lista de sessões: agrupar linhas por clienteID e fazer o cálculo se é a mesma sessão ou uma nova e contar as sessões
+* Tipo de usuário (novos ou recorrentes)
+* Listar o número de cada tipo de usuário para cada dia
+* Calcular o número de entradas e saídas por página (baseado no timestamp e clientID)
 * Calcular o número de visitas por termo de pesquisa
