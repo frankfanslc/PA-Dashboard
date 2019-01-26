@@ -1,5 +1,4 @@
-# PA-Dashboard
-Projeto aplicado - Web Analytics Dashboard
+# Projeto aplicado - Web Analytics Dashboard
 Reporting interface that allows you to monitor your website performance by tracking metrics like visitors, pageviews, and online conversions.
 
 Desenvolvimento de uma aplicação que obtenha os dados de hits de diversos sites
