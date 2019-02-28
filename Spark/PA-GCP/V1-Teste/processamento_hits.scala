@@ -64,6 +64,22 @@ conf.set(BigQueryConfiguration.OUTPUT_TABLE_WRITE_DISPOSITION_KEY, "WRITE_TRUNCA
  * Mapper Funcions
  * Funções para conversão dos objetos em chave-valor
  */
+def convertInitialRDD(record: JsonObject) : (String, Iterable[List[String]]) = {
+  val clientId 			= record.get("clientId").getAsString
+  val typeInteraction 	= record.get("type").getAsString
+  val version 			= record.get("version").getAsString
+  val websiteId			= record.get("tid").getAsString
+  val userId			= record.get("userId").getAsString
+  val referer			= record.get("referer").getAsString
+  val ip				= record.get("ip").getAsString
+  val timestamp			= record.get("timestamp").getAsString
+  //val screenResolution	= record.get("device.screenResolution").getAsString
+  val screenResolution	= ""
+  
+  val listaAttr = Iterable(List(typeInteraction, version, websiteId, userId, referer, ip, timestamp, screenResolution))
+  return (clientId, listaAttr)
+} 
+ 
 def convertToTuple(record: JsonObject) : (String, Long) = {
   val clientId = record.get("clientId").getAsString
   val count = 0
@@ -107,14 +123,8 @@ def convertToJsonOutput (
 	return jsonObject
 }
 
-/*def getClientPageViews (pageViewsByClientIDRdd: org.apache.spark.rdd.RDD[(String, Long)], clientID: String ) : (String, Long) = {	
-	//pageViewsByClientID.filter( cliente => cliente._1 == entry._2.get("clientId").getAsString ).first(),
-	val tupla = pageViewsByClientIDRdd.filter( cliente => cliente._1 == clientID ).first()
-	return tupla
-}*/
-
 /**
- * Entrada de dados 
+ * ENTRADA DE DADOS
  * Load data from BigQuery
  */
 val tableDataRDD = sc.newAPIHadoopRDD(
@@ -123,38 +133,32 @@ val tableDataRDD = sc.newAPIHadoopRDD(
     classOf[LongWritable],
     classOf[JsonObject])
 
-/*val wordCounts = (tableData
-    .map(entry => convertToTuple(entry._2))
-    .reduceByKey(_ + _))
-*/
-
 /**
- * Reducer Functions
+ * CÁLCULOS
  * Funções para a realização dos cálculos dos objetos
  */
  
+/** Transformação inicial do jsonObject para pares Key, Value */
+val rddHits = tableDataRDD.map(x => convertInitialRDD(x._2)) 
+
 /**Calculando o número de pageviews_day*/
-//val pageViewsDayRDD = (tableDataRDD.map(entry => mapperPageViewsDay(entry._2, numLinhasRDD)))
-val pageViewsDay = tableDataRDD.count()
+val pageViewsDay = rddHits.count()
 println(pageViewsDay)
 
 /**Calculando o número de unique_pageviews*/
-val pageViewsByClientID = (tableDataRDD.map(entry => mapperClientID(entry._2)).reduceByKey(_ + _))
-val pageViewsByClientRDD = pageViewsByClientID.map( cliente => cliente._1 == entry._2.get("clientId").getAsString ).first(),
+val pageViewsByClientID = rddHits.groupByKey()
 val uniquePageViews = pageViewsByClientID.count()
 println(uniquePageViews)
 
-//println(pageViewsByClientID.filter( cliente => cliente._1 == "1136591379.1543269").top(1))
-
-
-
-
+/**Calculando o número de pageviews por cliente */
+//val pageViewsByClientRDD = pageViewsByClientID.map( cliente => cliente._1 == entry._2.get("clientId").getAsString ).first()
+val pageViewsByClientRDD = pageViewsByClientID.map( cliente => (cliente._1, cliente._2.size))
 
 /**
  * Saída de Dados
  * Write data back into a new BigQuery table
  * IndirectBigQueryOutputFormat discards keys, so set key to null
- */
+
 (tableDataRDD
 	.map(
 		entry => (
@@ -169,11 +173,7 @@ println(uniquePageViews)
 	)
 	.saveAsNewAPIHadoopDataset(conf)
 )
-	
-/*(pageViewsByClientID
-    .map(pair => (null, convertToJson(pair)))
-    .saveAsNewAPIHadoopDataset(conf))
-    */
+	 */
 	
 //hitsProcessedRDD.take(10).foreach(l => println(l))
 /*(hitsProcessedRDD
